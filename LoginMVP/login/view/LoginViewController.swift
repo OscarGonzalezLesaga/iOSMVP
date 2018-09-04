@@ -14,6 +14,10 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var passwordLabel: UITextField!
     
+    let segueLoginHome = "segueLoginHome"
+    
+    var loginOK: Bool = false
+    
     var presenter: LoginPresenter<LoginViewController> = LoginPresenter()
     
     override func viewDidLoad() {
@@ -29,6 +33,19 @@ class LoginViewController: UIViewController {
     @IBAction func registerClicked(_ sender: UIButton) {
         presenter.validCredentailsLogin(mail: mailLabel?.text, password: passwordLabel?.text)
     }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        switch identifier {
+        case segueLoginHome:
+            if(loginOK){
+                return true
+            }else{
+                return false
+            }
+        default:
+            return false
+        }
+    }
 }
 
 extension LoginViewController: LoginView {
@@ -41,14 +58,17 @@ extension LoginViewController: LoginView {
     }
     
     func manageValidLogin() {
-        let alert = UIAlertController(title: "LOGIN", message: "Sus credenciales son correctas", preferredStyle: .alert)
+        loginOK = true
+        self.performSegue(withIdentifier: segueLoginHome, sender: nil)
+        /*let alert = UIAlertController(title: "LOGIN", message: "Sus credenciales son correctas", preferredStyle: .alert)
         alert.addAction(UIAlertAction( title: "Aceptar",style: .default,handler: nil))
-        self.present(alert, animated: true)
+        self.present(alert, animated: true)*/
     }
     
     func manageErrorLogin() {
-        let alert = UIAlertController(title: "LOGIN", message: "Sus credenciales son incorrectas", preferredStyle: .alert)
-        alert.addAction(UIAlertAction( title: "Aceptar",style: .destructive,handler: nil))
+        loginOK = false
+        let alert = UIAlertController(title: "LOGIN", message: "Sus credenciales no son correctas", preferredStyle: .alert)
+        alert.addAction(UIAlertAction( title: "Aceptar",style: .default,handler: nil))
         self.present(alert, animated: true)
     }
     

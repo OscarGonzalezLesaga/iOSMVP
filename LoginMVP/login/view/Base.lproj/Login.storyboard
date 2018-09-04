@@ -49,6 +49,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="88z-AA-BxC"/>
+                                    <segue destination="FuJ-jR-wvZ" kind="show" identifier="segueLoginHome" id="dg3-ku-6aj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -63,6 +64,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="32.512315270935964"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="31f-Wk-saR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="FuJ-jR-wvZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JtF-S6-XwF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050" y="-43"/>
         </scene>
     </scenes>
 </document>
