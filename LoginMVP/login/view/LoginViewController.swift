@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var passwordLabel: UITextField!
     
-    let segueLoginHome = "segueLoginHome"
+    let segueLoginHome = "segueHome"
     
     var loginOK: Bool = false
     
@@ -33,19 +33,7 @@ class LoginViewController: UIViewController {
     @IBAction func registerClicked(_ sender: UIButton) {
         presenter.validCredentailsLogin(mail: mailLabel?.text, password: passwordLabel?.text)
     }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        switch identifier {
-        case segueLoginHome:
-            if(loginOK){
-                return true
-            }else{
-                return false
-            }
-        default:
-            return false
-        }
-    }
+
 }
 
 extension LoginViewController: LoginView {
